@@ -1,0 +1,4 @@
+.env
+test.py
+.env.local
+/node_modules

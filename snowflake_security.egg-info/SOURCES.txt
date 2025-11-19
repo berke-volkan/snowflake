@@ -1,0 +1,10 @@
+pyproject.toml
+setup.py
+snowflake-security/__init__.py
+snowflake-security/cli.py
+snowflake-security/main.py
+snowflake_security.egg-info/PKG-INFO
+snowflake_security.egg-info/SOURCES.txt
+snowflake_security.egg-info/dependency_links.txt
+snowflake_security.egg-info/entry_points.txt
+snowflake_security.egg-info/top_level.txt
