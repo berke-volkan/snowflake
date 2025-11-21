@@ -80,7 +80,7 @@ blocks=[
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": "This is a mrkdwn section block :ghost: *this is bold*, and ~this is crossed out~, and <https://google.com|this is a link>"
+				"text": "Hey! Please select a OTP key from list below :dogheart:"
 			}
 		},
 		{
@@ -103,7 +103,7 @@ blocks=[
 
 @app.action("select_otp")
 def handle_select_key(ack, body, client):
-    ack()  # Important: acknowledge the action
+    ack()  
     response = convexclient.query(
 	"users:getUserInfo",{
 		"userId":body["user"]["id"] })
@@ -168,13 +168,10 @@ def otp(ack, respond, command):
         "users:getUserInfo", {"userId": command["user_id"]}
     )
     
-    otp = pyotp.TOTP(f.decrypt(bytes(response[0]['keys'][0]["token"]))).now()
     
     channel_id = command["channel_id"]
-
-    # blocks'u her seferinde temizle / kopya oluştur
-    local_blocks = copy.deepcopy(blocks)  # blocks sabitse deep copy ile temiz kopya al
-    local_blocks[1]['elements'][0]['options'] = []  # eski seçenekleri sıfırla
+    local_blocks = copy.deepcopy(blocks)  
+    local_blocks[1]['elements'][0]['options'] = []  
 
     for x in range(len(response[0]['keys'])):
         local_blocks[1]['elements'][0]['options'].append({
