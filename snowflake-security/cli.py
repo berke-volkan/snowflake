@@ -12,10 +12,8 @@ key=convexclient.query("security:getKey")
 
 def main():
     print_formatted_text('Welcome to the Snowflake CLI!')
-    #user_id = prompt('Please enter your user ID: ')
-    #auth=prompt('Please enter your authentication key: ')
-    user_id="U07SU9F50MT"
-    auth="hey"
+    user_id = prompt('Please enter your user ID: ')
+    auth=prompt('Please enter your authentication key: ')
     response = convexclient.query("users:getUserInfo",{"userId":user_id })
     if auth != response[0]['keys'][0]["name"]:
         print_formatted_text("Invalid auth key")
